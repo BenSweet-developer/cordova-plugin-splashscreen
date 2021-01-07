@@ -95,14 +95,18 @@ public class SplashScreen extends CordovaPlugin {
         if (HAS_BUILT_IN_SPLASH_SCREEN) {
             return;
         }
+
         // Make WebView invisible while loading URL
         // CB-11326 Ensure we're calling this on UI thread
-        cordova.getActivity().runOnUiThread(new Runnable() {
+
+        // Ben - By commenting the below code helps the backbutton click listener not lister at first time issue after launch the application.
+        /* cordova.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 getView().setVisibility(View.INVISIBLE);
             }
-        });
+        }); */
+
         int drawableId = getSplashId();
 
         // Save initial orientation.
